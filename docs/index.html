@@ -9,7 +9,7 @@
       content="JARVIS AI 3.5 workspace with radial command wheel, two-way voice conversation, 16 specialist domains, neural image studio, live Google news, and direct device installation."
     />
     <meta name="theme-color" content="#020813" />
-    <link rel="manifest" href="./manifest.json" />
+    <meta name="google-site-verification" content="Wmh9OFfNjSLlFBakbWeXcPKD8KeuhiwWGDIJ9eyliwY" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -102,7 +102,7 @@
               </div>
             </div>
 
-            <!-- 1. LIVE DEPLOYED APP IFRAME (WITH AUTOMATIC FALLBACK TO BUILT-IN PROTOTYPE) -->
+            <!-- 1. LIVE DEPLOYED APP IFRAME -->
             <div id="liveIframeWrap" class="iframe-wrap">
               <iframe
                 id="jarvisLiveFrame"
@@ -113,7 +113,7 @@
               ></iframe>
             </div>
 
-            <!-- 2. BUILT-IN WORKING INTERACTIVE HUD PROTOTYPE (WORKS EVEN OFFLINE / IN SANDBOX) -->
+            <!-- 2. BUILT-IN WORKING INTERACTIVE HUD PROTOTYPE -->
             <div id="builtInPrototype" class="hud-prototype hidden">
               <div class="hud-top">
                 <div class="hud-brand">
@@ -356,7 +356,6 @@
 
     <script>
       (function () {
-        // 1. Direct One-Click App Install Handler
         let deferredPrompt = null;
         window.addEventListener('beforeinstallprompt', function (e) {
           e.preventDefault();
@@ -371,7 +370,6 @@
             });
             return;
           }
-          // Open standalone app with ?autoinstall=1 so browser fires native install directly
           window.open(
             'https://jarvis-ai-wine-seven.vercel.app/?autoinstall=1',
             '_blank',
@@ -380,15 +378,14 @@
         }
 
         ['installTopBtn', 'installHeroBtn', 'installBottomBtn'].forEach(function (id) {
-          const el = document.getElementById(id);
+          var el = document.getElementById(id);
           if (el) el.addEventListener('click', triggerDirectInstall);
         });
 
-        // 2. Toggle Between Live App Iframe & Built-in Working Prototype
-        const toggleBtn = document.getElementById('toggleEmbedModeBtn');
-        const iframeWrap = document.getElementById('liveIframeWrap');
-        const builtInProto = document.getElementById('builtInPrototype');
-        let showingBuiltIn = false;
+        var toggleBtn = document.getElementById('toggleEmbedModeBtn');
+        var iframeWrap = document.getElementById('liveIframeWrap');
+        var builtInProto = document.getElementById('builtInPrototype');
+        var showingBuiltIn = false;
 
         function setPrototypeMode(useBuiltIn) {
           showingBuiltIn = useBuiltIn;
@@ -409,14 +406,13 @@
           });
         }
 
-        // 3. Working Interactive Built-in Prototype Logic
-        const protoWelcome = document.getElementById('protoWelcome');
-        const protoMessages = document.getElementById('protoMessages');
-        const protoForm = document.getElementById('protoForm');
-        const protoInput = document.getElementById('protoInput');
-        const protoResetBtn = document.getElementById('protoResetBtn');
-        const protoCoreBtn = document.getElementById('protoCoreBtn');
-        const protoVoiceBtn = document.getElementById('protoVoiceBtn');
+        var protoWelcome = document.getElementById('protoWelcome');
+        var protoMessages = document.getElementById('protoMessages');
+        var protoForm = document.getElementById('protoForm');
+        var protoInput = document.getElementById('protoInput');
+        var protoResetBtn = document.getElementById('protoResetBtn');
+        var protoCoreBtn = document.getElementById('protoCoreBtn');
+        var protoVoiceBtn = document.getElementById('protoVoiceBtn');
 
         function resetPrototype() {
           protoMessages.innerHTML = '';
@@ -430,18 +426,18 @@
         function appendBubble(role, text, imageUrl) {
           protoWelcome.classList.add('hidden');
           protoMessages.classList.remove('hidden');
-          const div = document.createElement('div');
+          var div = document.createElement('div');
           div.className = 'msg-bubble ' + role;
-          const label = document.createElement('div');
+          var label = document.createElement('div');
           label.className = 'msg-role';
           label.textContent = role === 'user' ? 'YOU' : 'JARVIS';
-          const body = document.createElement('div');
+          var body = document.createElement('div');
           body.className = 'msg-text';
           body.textContent = text;
           div.appendChild(label);
           div.appendChild(body);
           if (imageUrl) {
-            const img = document.createElement('img');
+            var img = document.createElement('img');
             img.src = imageUrl;
             img.alt = 'JARVIS Generated Visual';
             img.className = 'msg-img';
@@ -452,11 +448,10 @@
         }
 
         async function runPrototypeQuery(promptText) {
-          const q = promptText.trim();
+          var q = promptText.trim();
           if (!q) return;
           appendBubble('user', q);
 
-          // Instant local handlers + live cloud AI fallback
           if (/full form of dha/i.test(q)) {
             appendBubble(
               'assistant',
@@ -472,7 +467,7 @@
             return;
           }
           if (/create|generate|draw.*image/i.test(q)) {
-            const imgUrl =
+            var imgUrl =
               'https://image.pollinations.ai/prompt/' +
               encodeURIComponent(q) +
               '?width=768&height=512&nologo=true';
@@ -481,19 +476,19 @@
           }
 
           try {
-            const res = await fetch(
+            var res = await fetch(
               'https://text.pollinations.ai/' +
                 encodeURIComponent(
                   'Answer clearly in plain notebook style without markdown asterisks or hashes: ' + q
                 )
             );
             if (res.ok) {
-              const reply = (await res.text()).replace(/[*#`$]/g, '').trim();
+              var reply = (await res.text()).replace(/[*#`$]/g, '').trim();
               appendBubble('assistant', reply || 'JARVIS is online and ready.');
               return;
             }
           } catch (err) {
-            // Offline fallback
+            // Fallback
           }
           appendBubble(
             'assistant',
@@ -504,7 +499,7 @@
         if (protoForm) {
           protoForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            const val = protoInput.value;
+            var val = protoInput.value;
             protoInput.value = '';
             runPrototypeQuery(val);
           });
@@ -512,14 +507,14 @@
 
         document.querySelectorAll('[data-prompt]').forEach(function (btn) {
           btn.addEventListener('click', function () {
-            const p = btn.getAttribute('data-prompt');
+            var p = btn.getAttribute('data-prompt');
             if (p) runPrototypeQuery(p);
           });
         });
 
         if (protoVoiceBtn) {
           protoVoiceBtn.addEventListener('click', function () {
-            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRec) {
               appendBubble(
                 'assistant',
@@ -527,11 +522,11 @@
               );
               return;
             }
-            const rec = new SpeechRec();
+            var rec = new SpeechRec();
             rec.lang = 'en-US';
             protoVoiceBtn.textContent = 'Listening...';
             rec.onresult = function (ev) {
-              const transcript = ev.results[0][0].transcript;
+              var transcript = ev.results[0][0].transcript;
               runPrototypeQuery(transcript);
             };
             rec.onend = function () {
