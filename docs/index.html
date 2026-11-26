@@ -1,217 +1,546 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="Wmh9OFfNjSLlFBakbWeXcPKD8KeuhiwWGDIJ9eyliwY" />
-  <title>Jarvis AI.2.5 — Next-Generation Multimodal AI Workspace</title>
-  <meta name="description" content="Experience Jarvis AI.2.5. Use the live AI workspace right here or open the full-screen app." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-<body>
-  <div class="ambient-bg" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JARVIS AI 3.5 — Personal AI Assistant & Radial HUD</title>
+    <meta
+      name="description"
+      content="JARVIS AI 3.5 workspace with radial command wheel, two-way voice conversation, 16 specialist domains, neural image studio, live Google news, and direct device installation."
+    />
+    <meta name="theme-color" content="#020813" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
 
-  <!-- Top Navigation Bar (Gemini Style) -->
-  <header class="navbar">
-    <div class="nav-container">
-      <a href="#" class="brand" aria-label="Jarvis AI.2.5 Home">
-        <span class="sparkle-icon" aria-hidden="true">
-          <svg viewBox="0 0 28 28" fill="none">
-            <path d="M14 2C14.8 9.2 18.8 13.2 26 14C18.8 14.8 14.8 18.8 14 26C13.2 18.8 9.2 14.8 2 14C9.2 13.2 13.2 9.2 14 2Z" fill="url(#jarvisGrad)" />
-            <defs>
-              <linearGradient id="jarvisGrad" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#38BDF8" />
-                <stop offset="0.5" stop-color="#818CF8" />
-                <stop offset="1" stop-color="#22D3EE" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </span>
-        <span class="brand-text">Jarvis <span class="gradient-text">AI.2.5</span></span>
-      </a>
-
-      <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#live-app">Live Workspace</a>
-        <a href="#features">Features</a>
-        <a href="#models">Engines</a>
-      </nav>
-
-      <div class="nav-actions">
-        <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <span>Open App</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M7 7h10v10" />
-          </svg>
+    <!-- TOP NAVIGATION BAR -->
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a href="#top" class="brand">
+          <span class="arc-dot"></span>
+          <span>JARVIS <strong>AI 3.5</strong></span>
         </a>
-      </div>
-    </div>
-  </header>
 
-  <main>
-    <!-- Hero + Live Embedded JARVIS AI App -->
-    <section class="hero" id="live-app">
-      <div class="container">
-        <div class="hero-badge">
-          <span class="pulse-dot"></span>
-          <span>Powered by JARVIS Turbo & Dual Engine Pro</span>
-        </div>
+        <nav class="nav-links">
+          <a href="#workspace">Live Workspace</a>
+          <a href="#features">Features</a>
+          <a href="#engines">Engines</a>
+        </nav>
 
-        <h1 class="hero-title">
-          Meet <span class="gradient-text">Jarvis AI.2.5</span>
-        </h1>
-        <p class="hero-subtitle">
-          Your intelligent AI workspace for real-time web knowledge, multimodal vision, neural artwork synthesis, and voice interaction. Use the live app below or open it in full screen.
-        </p>
-
-        <!-- Top CTA under headline -->
-        <div class="hero-top-cta">
-          <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-            <span>Open Jarvis AI.2.5</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
+        <div class="topbar-actions">
+          <button type="button" id="installTopBtn" class="btn btn-install">
+            Install App
+          </button>
+          <a
+            href="https://jarvis-ai-wine-seven.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            Open App ↗
           </a>
-          <a href="#features" class="btn btn-ghost btn-lg">Explore Capabilities</a>
         </div>
+      </div>
+    </header>
 
-        <!-- Live JARVIS AI Application Window -->
-        <div class="prototype-shell">
-          <div class="prototype-header">
-            <div class="window-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="prototype-title">
-              <span class="model-indicator"></span>
-              <span>Jarvis AI.2.5 — Live Interactive Workspace</span>
-            </div>
-            <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="window-expand-btn">
-              <span>Full Screen</span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M7 7h10v10" />
-              </svg>
+    <!-- HERO & WORKING INTERACTIVE PROTOTYPE -->
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="pill-badge">
+            <span class="pulse-dot"></span>
+            <span>Powered by JARVIS Turbo, Dual Engine Pro & Neural Vision</span>
+          </div>
+
+          <h1>Meet <span class="gradient-text">JARVIS AI 3.5</span></h1>
+          <p class="hero-sub">
+            Your personal AI workspace with a 3D radial command wheel, two-way voice waveform,
+            16 specialist domains, neural art studio, and real-time Google news. Test the live
+            interactive prototype right below or install it directly onto your device.
+          </p>
+
+          <div class="hero-cta">
+            <a
+              href="https://jarvis-ai-wine-seven.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-lg"
+            >
+              Open Full JARVIS 3.5 App ↗
             </a>
+            <button type="button" id="installHeroBtn" class="btn btn-secondary btn-lg">
+              Direct Install to Device
+            </button>
           </div>
 
-          <div class="live-app-frame">
-            <iframe
-              src="https://jarvis-ai-wine-seven.vercel.app/"
-              title="Jarvis AI.2.5 Live Workspace"
-              allow="microphone; camera; clipboard-read; clipboard-write; fullscreen"
-              allowfullscreen
-            ></iframe>
+          <!-- LIVE WORKING WORKSPACE WINDOW -->
+          <div id="workspace" class="workspace-frame">
+            <div class="frame-header">
+              <div class="traffic-lights">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="frame-title">
+                <span class="pulse-dot"></span>
+                <span>JARVIS AI 3.5 — Live Interactive Workspace</span>
+              </div>
+              <div class="frame-controls">
+                <button type="button" id="toggleEmbedModeBtn" class="mini-btn" title="Switch between Live App & Built-in Interactive Prototype">
+                  Prototype Mode: Live
+                </button>
+                <a
+                  href="https://jarvis-ai-wine-seven.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mini-btn"
+                >
+                  Full Screen ↗
+                </a>
+              </div>
+            </div>
+
+            <!-- 1. LIVE DEPLOYED APP IFRAME (WITH AUTOMATIC FALLBACK TO BUILT-IN PROTOTYPE) -->
+            <div id="liveIframeWrap" class="iframe-wrap">
+              <iframe
+                id="jarvisLiveFrame"
+                src="https://jarvis-ai-wine-seven.vercel.app/"
+                title="JARVIS AI 3.5 Live Workspace"
+                allow="microphone; camera; display-capture; clipboard-write"
+                loading="lazy"
+              ></iframe>
+            </div>
+
+            <!-- 2. BUILT-IN WORKING INTERACTIVE HUD PROTOTYPE (WORKS EVEN OFFLINE / IN SANDBOX) -->
+            <div id="builtInPrototype" class="hud-prototype hidden">
+              <div class="hud-top">
+                <div class="hud-brand">
+                  <span class="arc-dot"></span>
+                  <strong>JARVIS</strong>
+                  <span class="status-tag">ONLINE • INTERACTIVE PROTOTYPE</span>
+                </div>
+                <div class="hud-top-btns">
+                  <button type="button" id="protoResetBtn" class="mini-btn">Core HUD</button>
+                  <button type="button" id="protoVoiceBtn" class="mini-btn cyan">🎙 Voice</button>
+                </div>
+              </div>
+
+              <div class="hud-body">
+                <!-- Left Radial Wheel -->
+                <div class="hud-left">
+                  <div class="radial-ring">
+                    <div class="radial-core" id="protoCoreBtn">
+                      <strong>JARVIS</strong>
+                      <span>CORE</span>
+                    </div>
+                    <button type="button" class="node n1" data-prompt="Give me today's top world and technology news.">News</button>
+                    <button type="button" class="node n2" data-prompt="Full form of DHA">Acronyms</button>
+                    <button type="button" class="node n3" data-prompt="Solve 2x + 5 = 19">Math</button>
+                    <button type="button" class="node n4" data-prompt="Write a formal leave application to the Principal.">Write</button>
+                  </div>
+                </div>
+
+                <!-- Center Core & Live Chat -->
+                <div class="hud-center">
+                  <div id="protoWelcome" class="proto-welcome">
+                    <div class="core-circle">
+                      <h2>JARVIS</h2>
+                      <p>Your Personal AI Assistant</p>
+                    </div>
+                    <div class="sample-chips">
+                      <button type="button" class="chip" data-prompt="Today's Top News">Today's Top News</button>
+                      <button type="button" class="chip" data-prompt="Full form of DHA">Full form of DHA</button>
+                      <button type="button" class="chip" data-prompt="Solve 2x + 5 = 19">Solve 2x + 5 = 19</button>
+                      <button type="button" class="chip" data-prompt="Create futuristic car image">Create futuristic car image</button>
+                    </div>
+                  </div>
+
+                  <div id="protoMessages" class="proto-messages hidden"></div>
+
+                  <form id="protoForm" class="proto-input-bar">
+                    <input
+                      type="text"
+                      id="protoInput"
+                      placeholder="Write your question to JARVIS..."
+                      autocomplete="off"
+                    />
+                    <button type="submit" class="send-btn">↑</button>
+                  </form>
+                </div>
+
+                <!-- Right Feature List -->
+                <div class="hud-right">
+                  <div class="panel-title">JARVIS FEATURES</div>
+                  <button type="button" class="feat-item" data-prompt="Activate Two-Way Voice Conversation">
+                    <span>Two-Way Voice Conversation</span>
+                    <em>VOICE</em>
+                  </button>
+                  <button type="button" class="feat-item" data-prompt="List the 16 Specialist Domains in JARVIS">
+                    <span>Specialist Matrix (16 Domains)</span>
+                    <em>PRO</em>
+                  </button>
+                  <button type="button" class="feat-item" data-prompt="Create futuristic car image">
+                    <span>Neural Image Studio</span>
+                    <em>FREE</em>
+                  </button>
+                  <button type="button" class="feat-item" data-prompt="Today's Top News">
+                    <span>Real-Time World News</span>
+                    <em>LIVE</em>
+                  </button>
+                  <button type="button" class="feat-item" data-prompt="Solve 2x + 5 = 19">
+                    <span>Engineering & Medical Lab</span>
+                    <em>LAB</em>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="below-frame-note">
+            Prefer a dedicated full-screen app window?
+            <a
+              href="https://jarvis-ai-wine-seven.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Full JARVIS AI 3.5 App ↗
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <!-- CAPABILITIES SECTION -->
+      <section id="features" class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">CAPABILITIES</span>
+            <h2>Everything you expect from a modern AI workspace</h2>
+            <p>
+              Engineered for speed, accuracy, and seamless creativity across desktop and mobile.
+            </p>
+          </div>
+
+          <div class="bento-grid">
+            <article class="card span-2">
+              <div class="card-icon cyan">🌐</div>
+              <h3>Live Web Knowledge & Citations</h3>
+              <p>
+                Connects directly to real-time Google news and web search to deliver up-to-date
+                briefings with clickable, verified source links.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon blue">⚡</div>
+              <h3>Dual Engine Pro</h3>
+              <p>
+                Switch seamlessly between ultra-fast JARVIS Turbo responses and deep multi-step
+                reasoning across 16 specialist professions.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon purple">🎨</div>
+              <h3>Neural Art Studio</h3>
+              <p>
+                Generate high-resolution artwork, holographic blueprints, and 3D renders from
+                natural language prompts in seconds.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon emerald">👁</div>
+              <h3>Vision & Screen Scan</h3>
+              <p>
+                Attach photos, screenshots, or capture your live screen for instant OCR text
+                extraction and visual analysis.
+              </p>
+            </article>
+
+            <article class="card span-2">
+              <div class="card-icon amber">🎙</div>
+              <h3>Two-Way Voice Core & Smart Export</h3>
+              <p>
+                Speak hands-free with animated dual-sided waveforms and auto-loop conversation, or
+                export any chat to HTML, JSON, Markdown, or TXT and share full sessions via link.
+              </p>
+            </article>
           </div>
         </div>
+      </section>
 
-        <!-- Primary Open App CTA Directly Under App Window -->
-        <div class="prototype-footer-cta">
-          <p class="prototype-note">Prefer a dedicated full-screen tab for your workspace?</p>
-          <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-glow btn-lg">
-            <span>Open Full Jarvis AI.2.5 App</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 17L17 7M7 7h10v10" />
-            </svg>
+      <!-- INTELLIGENCE TIERS -->
+      <section id="engines" class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">INTELLIGENCE TIERS</span>
+            <h2>Choose the right engine for every task</h2>
+          </div>
+
+          <div class="tiers-grid">
+            <article class="card">
+              <span class="tier-badge">Default</span>
+              <h3>JARVIS Turbo</h3>
+              <p>
+                Optimized for instant everyday answers, clean notebook formatting, step-by-step
+                math solving, and real-time web queries.
+              </p>
+            </article>
+
+            <article class="card featured">
+              <span class="tier-badge cyan">Pro Reasoning</span>
+              <h3>Dual Engine Pro</h3>
+              <p>
+                Built for medical clinical references, mechanical & electrical engineering
+                workbenches, software architecture, and deep analysis.
+              </p>
+            </article>
+
+            <article class="card">
+              <span class="tier-badge purple">Creative</span>
+              <h3>JARVIS Art Studio</h3>
+              <p>
+                Dedicated visual synthesis engine for concept art, architectural renders, and
+                custom aspect-ratio image generation.
+              </p>
+            </article>
+          </div>
+
+          <div class="cta-banner">
+            <div>
+              <h3>Ready to experience JARVIS AI 3.5?</h3>
+              <p>
+                Start chatting immediately in Guest Mode, sign in with Gmail to save history, or
+                install directly to your device.
+              </p>
+            </div>
+            <div class="cta-banner-btns">
+              <button type="button" id="installBottomBtn" class="btn btn-secondary">
+                Install App
+              </button>
+              <a
+                href="https://jarvis-ai-wine-seven.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                Open App Now ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="brand">
+          <span class="arc-dot"></span>
+          <span>JARVIS <strong>AI 3.5</strong></span>
+        </div>
+        <div class="footer-note">
+          Built for high-speed intelligence •
+          <a
+            href="https://jarvis-ai-wine-seven.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            jarvis-ai-wine-seven.vercel.app
           </a>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- Features Bento Grid -->
-    <section class="features" id="features">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Capabilities</span>
-          <h2>Everything you expect from a modern AI workspace</h2>
-          <p>Engineered for speed, accuracy, and seamless creativity across desktop and mobile.</p>
-        </div>
+    <script>
+      (function () {
+        // 1. Direct One-Click App Install Handler
+        let deferredPrompt = null;
+        window.addEventListener('beforeinstallprompt', function (e) {
+          e.preventDefault();
+          deferredPrompt = e;
+        });
 
-        <div class="bento-grid">
-          <article class="bento-card card-wide">
-            <div class="card-icon">🌐</div>
-            <h3>Live Web Knowledge & Citations</h3>
-            <p>Connects directly to real-time web search to deliver up-to-date answers with clickable, verified source links.</p>
-          </article>
+        function triggerDirectInstall() {
+          if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.finally(function () {
+              deferredPrompt = null;
+            });
+            return;
+          }
+          // Open standalone app with ?autoinstall=1 so browser fires native install directly
+          window.open(
+            'https://jarvis-ai-wine-seven.vercel.app/?autoinstall=1',
+            '_blank',
+            'noopener,noreferrer'
+          );
+        }
 
-          <article class="bento-card">
-            <div class="card-icon">⚡</div>
-            <h3>Dual Engine Pro</h3>
-            <p>Switch seamlessly between ultra-fast JARVIS Turbo responses and deep multi-step reasoning.</p>
-          </article>
+        ['installTopBtn', 'installHeroBtn', 'installBottomBtn'].forEach(function (id) {
+          const el = document.getElementById(id);
+          if (el) el.addEventListener('click', triggerDirectInstall);
+        });
 
-          <article class="bento-card">
-            <div class="card-icon">🎨</div>
-            <h3>Neural Art Studio</h3>
-            <p>Generate original high-resolution artwork or edit uploaded images using natural language prompts.</p>
-          </article>
+        // 2. Toggle Between Live App Iframe & Built-in Working Prototype
+        const toggleBtn = document.getElementById('toggleEmbedModeBtn');
+        const iframeWrap = document.getElementById('liveIframeWrap');
+        const builtInProto = document.getElementById('builtInPrototype');
+        let showingBuiltIn = false;
 
-          <article class="bento-card">
-            <div class="card-icon">👁️</div>
-            <h3>Vision & File Analysis</h3>
-            <p>Paste screenshots directly with <code>Ctrl+V</code> or attach PDFs, documents, and photos for instant analysis.</p>
-          </article>
+        function setPrototypeMode(useBuiltIn) {
+          showingBuiltIn = useBuiltIn;
+          if (useBuiltIn) {
+            iframeWrap.classList.add('hidden');
+            builtInProto.classList.remove('hidden');
+            toggleBtn.textContent = 'Prototype Mode: Built-in HUD';
+          } else {
+            builtInProto.classList.add('hidden');
+            iframeWrap.classList.remove('hidden');
+            toggleBtn.textContent = 'Prototype Mode: Live';
+          }
+        }
 
-          <article class="bento-card card-wide">
-            <div class="card-icon">🎙️</div>
-            <h3>JARVIS Voice Core & Smart Export</h3>
-            <p>Listen to responses with natural voice synthesis and export any conversation to PDF, Markdown, HTML, or JSON.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', function () {
+            setPrototypeMode(!showingBuiltIn);
+          });
+        }
 
-    <!-- Engines Comparison Section -->
-    <section class="models" id="models">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-tag">Intelligence Tiers</span>
-          <h2>Choose the right engine for every task</h2>
-        </div>
+        // 3. Working Interactive Built-in Prototype Logic
+        const protoWelcome = document.getElementById('protoWelcome');
+        const protoMessages = document.getElementById('protoMessages');
+        const protoForm = document.getElementById('protoForm');
+        const protoInput = document.getElementById('protoInput');
+        const protoResetBtn = document.getElementById('protoResetBtn');
+        const protoCoreBtn = document.getElementById('protoCoreBtn');
+        const protoVoiceBtn = document.getElementById('protoVoiceBtn');
 
-        <div class="models-grid">
-          <div class="model-card">
-            <div class="model-badge">Default</div>
-            <h3>JARVIS Turbo</h3>
-            <p>Optimized for instant everyday answers, rapid brainstorming, summaries, and real-time web queries.</p>
-          </div>
-          <div class="model-card featured">
-            <div class="model-badge pro">Pro Reasoning</div>
-            <h3>Dual Engine Pro</h3>
-            <p>Built for complex software architecture, debugging, deep research synthesis, and multi-document analysis.</p>
-          </div>
-          <div class="model-card">
-            <div class="model-badge art">Creative</div>
-            <h3>Jarvis Art Studio</h3>
-            <p>Dedicated visual synthesis engine for concept art, UI mockups, and image-to-image transformations.</p>
-          </div>
-        </div>
+        function resetPrototype() {
+          protoMessages.innerHTML = '';
+          protoMessages.classList.add('hidden');
+          protoWelcome.classList.remove('hidden');
+        }
 
-        <div class="bottom-banner">
-          <div>
-            <h2>Ready to experience Jarvis AI.2.5?</h2>
-            <p>Start chatting immediately in Guest Mode or sign in to sync your workspace.</p>
-          </div>
-          <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-            <span>Open App Now</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+        if (protoResetBtn) protoResetBtn.addEventListener('click', resetPrototype);
+        if (protoCoreBtn) protoCoreBtn.addEventListener('click', resetPrototype);
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="brand-text">Jarvis <span class="gradient-text">AI.2.5</span></span>
-      <p>Built for high-speed intelligence · <a href="https://jarvis-ai-wine-seven.vercel.app/" target="_blank" rel="noopener noreferrer">jarvis-ai-wine-seven.vercel.app</a></p>
-    </div>
-  </footer>
-</body>
+        function appendBubble(role, text, imageUrl) {
+          protoWelcome.classList.add('hidden');
+          protoMessages.classList.remove('hidden');
+          const div = document.createElement('div');
+          div.className = 'msg-bubble ' + role;
+          const label = document.createElement('div');
+          label.className = 'msg-role';
+          label.textContent = role === 'user' ? 'YOU' : 'JARVIS';
+          const body = document.createElement('div');
+          body.className = 'msg-text';
+          body.textContent = text;
+          div.appendChild(label);
+          div.appendChild(body);
+          if (imageUrl) {
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = 'JARVIS Generated Visual';
+            img.className = 'msg-img';
+            div.appendChild(img);
+          }
+          protoMessages.appendChild(div);
+          protoMessages.scrollTop = protoMessages.scrollHeight;
+        }
+
+        async function runPrototypeQuery(promptText) {
+          const q = promptText.trim();
+          if (!q) return;
+          appendBubble('user', q);
+
+          // Instant local handlers + live cloud AI fallback
+          if (/full form of dha/i.test(q)) {
+            appendBubble(
+              'assistant',
+              'Here are the major full forms of DHA:\n\n1. Defence Housing Authority — Major residential housing authority in Pakistan.\n2. Docosahexaenoic Acid — Essential omega-3 fatty acid vital for brain and retina health.\n3. Dubai Health Authority — Government healthcare regulator in Dubai, UAE.'
+            );
+            return;
+          }
+          if (/2x\s*\+\s*5\s*=\s*19/i.test(q)) {
+            appendBubble(
+              'assistant',
+              'Given equation: 2x + 5 = 19\nStep 1: Subtract 5 from both sides: 2x = 14\nStep 2: Divide both sides by 2: x = 7'
+            );
+            return;
+          }
+          if (/create|generate|draw.*image/i.test(q)) {
+            const imgUrl =
+              'https://image.pollinations.ai/prompt/' +
+              encodeURIComponent(q) +
+              '?width=768&height=512&nologo=true';
+            appendBubble('assistant', 'Here is the generated visual for "' + q + '":', imgUrl);
+            return;
+          }
+
+          try {
+            const res = await fetch(
+              'https://text.pollinations.ai/' +
+                encodeURIComponent(
+                  'Answer clearly in plain notebook style without markdown asterisks or hashes: ' + q
+                )
+            );
+            if (res.ok) {
+              const reply = (await res.text()).replace(/[*#`$]/g, '').trim();
+              appendBubble('assistant', reply || 'JARVIS is online and ready.');
+              return;
+            }
+          } catch (err) {
+            // Offline fallback
+          }
+          appendBubble(
+            'assistant',
+            'JARVIS AI 3.5 Prototype active. Click "Open Full JARVIS 3.5 App" for full multi-modal voice, vision, and 16 specialist engines.'
+          );
+        }
+
+        if (protoForm) {
+          protoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const val = protoInput.value;
+            protoInput.value = '';
+            runPrototypeQuery(val);
+          });
+        }
+
+        document.querySelectorAll('[data-prompt]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            const p = btn.getAttribute('data-prompt');
+            if (p) runPrototypeQuery(p);
+          });
+        });
+
+        if (protoVoiceBtn) {
+          protoVoiceBtn.addEventListener('click', function () {
+            const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SpeechRec) {
+              appendBubble(
+                'assistant',
+                'Voice recognition is ready in the full app window. Click "Open Full JARVIS 3.5 App" to start two-way voice.'
+              );
+              return;
+            }
+            const rec = new SpeechRec();
+            rec.lang = 'en-US';
+            protoVoiceBtn.textContent = 'Listening...';
+            rec.onresult = function (ev) {
+              const transcript = ev.results[0][0].transcript;
+              runPrototypeQuery(transcript);
+            };
+            rec.onend = function () {
+              protoVoiceBtn.textContent = '🎙 Voice';
+            };
+            rec.start();
+          });
+        }
+      })();
+    </script>
+  </body>
 </html>
